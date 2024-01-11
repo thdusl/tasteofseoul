@@ -1,0 +1,628 @@
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+/* 전체 선택자 */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+/* 태그 선택자 */
+li { list-style: none;}
+a { text-decoration: none; color: #111; display: block; }
+img { width: 100%; }
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'S-CoreDream-3Light';
+}
+h1 { font-size: 45px ;
+}
+/* 클래스 선택자 */
+.wrap { width: 100%; } /* 브라우저의 가로길이에 맞춤 */
+header {
+    width: 100%;
+    height: 100px;
+    padding-top: 34px;
+}
+/* 부모객체인 header를 없애버리면 이 클래스 안에 들어있는 모든 객체에 적용이 된다 */
+.centerBox {
+    width: 1400px;
+    margin: 0 auto;
+    /* 자식객체 가로로 나열 */
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+header .logo {
+    width: 240px;
+}
+header .centerBox nav {
+    width: 740px;
+}
+/* 자식 선택자 (>) */
+header .centerBox nav > ul {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+header .centerBox nav > ul > li {
+    position: relative;
+}
+header .centerBox nav > ul > li > a {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    /* 글자들이 자리가 좁아서 아래로 내려가는 현상 방지 */
+    white-space: nowrap;
+    /* 주메뉴와 서브메뉴의 간격 조절 */
+    padding-bottom: 40px;
+}
+/* 주메뉴에 마우스 오버했을 때 글자색 변경 */
+/* li에 :hover를 붙이면 서브메뉴로 마우스를 내려도 주메뉴의 바뀐 색이 유지됨 */
+header .centerBox nav > ul > li:hover > a {
+    color: #d5608b;
+}
+
+/* 서브메뉴 */
+header .centerBox nav .sub {
+    /* 부모 객체(li)를 기준으로 .sub를 가운데 정렬 */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    /* 서서히 나타나는 애니메이션 */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s;
+    background-color: #d56080;
+}
+header .centerBox nav .sub li a {
+    padding: 10px;
+    text-align: center;
+    /* 자간 */
+    letter-spacing: -1px;
+    font-size: 15px;
+    white-space: nowrap;
+    color: #fff;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+header .centerBox nav .sub li a:hover {
+    text-decoration: underline;
+}
+/* 주메뉴에 마우스 오버했을 때 서브메뉴 서서히 나타남 */
+header .centerBox nav ul > li:hover .sub {
+    opacity: 1;
+    visibility: visible;
+}
+/* 다국어 지원 영역 */
+header .centerBox .lang {
+    /* 자식객체 hd-pop를 배치할 때 .lang이 기준이 됨 */
+    position: relative;
+    width: 80px; 
+    height: 20px;
+}
+header .centerBox .lang a {
+    display: flex;
+    flex-flow: nowrap;
+    justify-content: space-between;
+    /* .lang 영역에서 자식객체들을 세로 가운데 정렬 */
+    align-items: center;
+}
+header .centerBox .lang a img {
+    /* 원본크기 유지 */
+    width: initial;
+}
+header .centerBox .lang a p {
+    font-size: 14px;
+}
+header .centerBox .lang .hd-pop {
+    /* .lang 영역과 겹침 */
+    position: absolute;
+    width: 80px;
+    top:30px; left: 0;
+    padding: 22px;
+    /* 부모객체 .lang에 마우스 오버했을 때 서서히 나타남 */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s;
+}
+header .centerBox .lang .hd-pop a {
+    /* a태그의 형제 객체인 :before와 :after와 겹침 */
+    position: absolute;
+    top:0px; left: 0;
+    /* 사각형이 예쁘게 넓어지게 하기 위함임 */
+    padding: 12px 26px;
+    border:1px solid #ccc;
+    background-color: #fff;
+    font-size:14px;
+}
+header .centerBox .lang .hd-pop:before {
+    /* 형제객체 a 태그와 :after와 겹침 */
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform:translateX(-50%) ;
+    content: "";
+    border: 4px solid transparent;
+    border-bottom:  8px solid #999;
+}
+header .centerBox .lang .hd-pop:after {
+    /* 형제객체 a태그와 :before와 겹침 */
+    position: absolute;
+    top: -10x;
+    left: 50%;
+    transform:translateX(-50%) ;
+    content: "";
+    border: 3px solid transparent;
+    border-bottom:  8px solid #fff;
+}
+/* .lang에 마우스 오버했을 때 말풍선 (.hp-pop) 나타남 */
+header .centerBox .lang:hover .hd-pop {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* section */
+/* section .main a { display: grid; }  메인과 세터박스가 간격없이 붙음 */
+section .main a img { display: block;}
+section.s1 .centerBox {
+    /* 높이를 정해야 간격이 옮겨짐 */
+    height: 90px;
+    align-items: center;
+}
+/* 서울미식 주간 굵기 */
+section .grayLine h3 {
+    font-size: 24px;
+}
+section .grayLine {
+    background-color: #333;
+    width: 100%;
+    height: 90px;
+    color: #fff;
+}
+section .grayLine .line {
+    /* 옆으로 배치? p,a태그 간격이 띄워지네? */
+    width: 75%; 
+    /* a태그와 p태그 글자 사이즈 조절 */
+    font-size: 17px;
+}
+section .grayLine .centerBox div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+section .grayLine .centerBox div div {
+    width: 48%;
+    /* 글자 넘어감 방지 */
+    white-space: nowrap;
+}
+section .grayLine .centerBox div p {
+    font-weight: bold;
+}
+section .grayLine .centerBox .line a {
+    background-color: #515151;
+    padding: 9px 22px;
+    /* 박스 둥글게 */
+    border-radius: 30px;
+    color: #fff;
+}
+
+section .grayLine .centerBox div a:hover {
+    background-color: #cd4575;
+}
+section .grayLine .centerBox .line2 a:hover {
+    background-color: #14843a;
+}
+section.s2 {
+    background-image: url(../img/bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 60px 0;
+}
+section.s2 h1 {
+    font-size: 44px;
+    color: #333;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+section.s2 p {
+    font-family: 'S-CoreDream-3Light';
+    font-size: 18px;
+    line-height: 32px;
+}
+section.s2 .title a {  /*  */
+    padding: 10px 30px;
+    border-radius: 26px;
+    border: 2px solid #999;
+    width: 200px;
+    /*글씨랑 떨어져야 함*/
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: -2px;
+    background-image: url(../img/KakaoTalk_20240108_114452549.png);
+    background-position: 165px center;
+    background-repeat: no-repeat;
+}
+section.s2 .title a:hover {
+    text-decoration: underline;
+}
+section.s2 .content ul {
+    display: grid;
+    gap:60px;
+    grid-template-columns: repeat(3, 1fr);  /*3열(가로)*/
+    grid-template-rows: repeat(2, 1fr);     /*2행(세로)*/
+}
+section.s2 .content ul li {
+    /* grid를 썼더니 검정반투명이 남아서 사이즈를 지정할 수 밖에 없었음 */
+    width: 305px; height: 305px;
+    border-radius: 100%;
+    position: relative;
+}
+section.s2 .content ul li .hover {
+    border-radius: 100%;
+    background-color: rgba(0,0,0,0.6);  /*검정색 반투명*/
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0; top: 0;
+    /* a태그 위치를 중심으로 이동 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;      /*안보임*/
+}
+section.s2 .content ul li .hover a {
+    padding: 12px 24px;
+    border: 2px solid #fff;
+    color: #fff;
+    border-radius: 30px;
+    /* 블록요소를 인라인 요소로 변환 */
+    display: inline;
+    font-size: 14px;
+}
+/* .content ul li에 마우스 오버했을 때 .hover 보임 */
+section.s2 .content ul li:hover .hover {
+    opacity: 1;
+}
+
+/* section 3번째, 4번째, 5번째, 7번째 centerBox는 자식객체를 열기준으로 정렬, 그룹 선택자(,) 사용 */
+section.s3 .centerBox, section.s4 .centerBox, section.s5 .centerBox, section.s7 .centerBox {
+    flex-flow: column nowrap;
+    align-items: center;
+}
+section.s3 {
+    background-color: #fcf5e3;
+    /* 쌤 추가 위 아래 간격을 만듦 */
+    padding: 90px 0;    
+}
+section.s3 .chefs {
+    margin-top: 40px;   /*쌤 추가*/
+}
+section.s3 h1 {
+    /* margin-bottom: 30px; 내가 씀*/
+    /* 글자 가운데로 */
+    text-align: center;
+}
+section.s3 .chefs ul {
+    display: grid;
+    gap:30px;
+    grid-template-columns: repeat(6,1fr);  /*6열(가로)*/
+    grid-template-rows: repeat(2, 1fr);     /*2행(세로)*/
+}
+section.s3 .chefs ul li {
+    background-color: #fff;
+    padding : 15px 15px 50px;
+    /* 그림자 효과 */
+    box-shadow: 0px 3px 10px #ccc;
+    /* 자간 좁히기 */
+    letter-spacing: -3px;
+    /* 화살표 모양의 커서를 손모양으로 표시하기 */
+    cursor: pointer;
+}
+section.s3 .chefs ul li span {
+    color: #cd4575;
+    font-size: 14px;
+    margin: 12px 0 ;    /*쌤 추가 글자 높이 간격 띄움, 인라인 요소라서 적용안됨*/
+    display: block; /*쌤 추가 인라인을 블록요소로 변경*/
+}
+section.s3 .chefs ul li span i {
+    /* i의 부모 객체인 span을 블록요소로 변경해서 이동이 가능함 */
+    float: right;
+    color: #999;
+}
+section.s3 .chefs ul li p { /*쌤 추가*/
+    font-size: 15px;
+    color: #666;
+}
+
+section.s4 {
+    /* 위 아래 간격 추가 */
+    padding: 120px 0px;
+}
+/* 유튜브 아이콘 사이즈 조정 */
+section.s4 h1 img { 
+    /* width: hi; */
+    width: 45px;
+}
+section.s4 .centerBox .year {
+    /* 쌤 추가 */
+    width: 600px;
+    display: flex;
+    /* 쌤 추가 기본값, 일부러 써둔 것*/
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    /* 쌤 추가 */
+    margin: 40px 0;
+}
+section.s4 .centerBox .year a {
+    /* 쌤 추가 */
+    padding: 12px 50px;
+    border-radius: 30px;
+    border: 1px solid #ccc;
+    /* 쌤 추가 */
+    font-size: 18px;
+    font-weight: bold;
+}
+/* 쌤 추가 */
+section.s4 .year a:first-child {
+    background-color: #cb4574;
+    color: #fff;
+}
+
+section.s5 {
+    background-color: #eee;
+    padding: 110px 0px;
+}
+section.s5 h1 img {
+    /* 아이콘 사진을 중간에 오게 하는건가? */
+    width: initial;
+}
+section.s5 .centerBox .taste {
+    width: 100%;
+    margin: 50px 0;
+}
+section.s5 .centerBox .taste ul {
+    display:grid;
+    gap: 24px;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: repeat(1,1fr);
+}
+section.s5 .underline {
+    width: 100%;
+    height: 1px;
+    position: relative;
+}
+section.s5 .underline:before {
+    content: "";
+    position: absolute;
+    width: 40%;
+    /* 선 굵기용으로 사용했음 */
+    height: 1px;
+    background-color: #999;
+    left: 0;
+    bottom: 0;
+}
+section.s5 .underline::after {
+    content: "";
+    position: absolute;
+    width: 40%;
+    /* 선 굵기용으로 사용했음 */
+    height: 1px;
+    background-color: #999;
+    right: 0;
+    bottom: 0;
+}
+
+section.s6 {
+    padding: 100px 0;
+}
+section.s6 .box {
+    width: 47.8%;
+}
+section.s6 .box .title {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding-bottom: 20px;
+}
+section.s6 .box .title h1 {
+    font-size: 34px;
+}
+section.s6 .box .title button {
+    border: 1px solid #aaa;
+    border-radius: 100%;
+    background-color: transparent; /*투명*/
+    padding: 12px;
+    font-size: 15px;
+    cursor: pointer;
+    width: 40px;
+    color:#333;
+}
+section.s6 .box .event {
+    padding: 30px 0 ;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+section.s6 .box .event .date{
+    border: 4px solid #efefef;
+    text-align: center;
+    /* 자식객체 h2와 span을 부모의 정가운데로 정렬 */
+    display: flex;
+    height: 100px;
+    width: 100px;
+    flex-flow: column nowrap;  /*열기준 줄바꿈x*/
+    justify-content: center;
+    align-items: center;
+    letter-spacing: -1px;
+}
+section.s6 .box .event .date h2 {
+    font-size: 32px;
+    color: #cd4574;
+}
+section.s6 .box .event .date span {
+    font-size: 15px;
+    font-weight: bold;
+}
+section.s6 .box .event .event_con {
+    line-height: 34px;
+    letter-spacing: -1px;
+}
+section.s6 .box .event .event_con h3 {
+    font-size: 23px;
+}
+section.s6 .box .event .event_con p {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 10px;
+}
+section.s6 .box .event .event_con span{
+    font-size: 14px;
+    color: #aaa;
+    margin-top: 10px;
+}
+section.s6 .box .notice_list {
+    padding: 20px 0;
+}
+section.s6 .box .notice_list ul li a {
+    display: flex;
+    justify-content: space-between;
+    color: #666;
+    font-size: 14px;
+    margin: 12px 0;
+}
+section.s6 .box .notice_list ul li a span {
+    color: #999;
+}
+section.s6 .box .notice_list ul li a p {
+    font-weight: bold;
+}
+section.s6 .box .notice_list ul li a:hover p {
+    text-decoration: underline;
+}
+section.s6 .box .news {
+    width: 100%;
+    /* 뉴스의 자식객체 div가 가로로 나열 */
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+section.s6 .box .news .news_list {
+    border: 1px solid #ccc;
+    width: 48%;
+    /* 손가락 나오게 함 */
+    cursor: pointer;
+}
+/* 영역에 마우스 오버하면 테두리색 변경 */
+section.s6 .box .news .news_list:hover {
+    border: 1px solid #cd4574;
+}
+section.s6 .box .news .news_list div {
+    padding: 40px 25px;
+}
+section.s6 .box .news .news_list div h4 {
+    font-size: 12px;
+    padding: 10px 12px;
+    background-color: #cd4574;
+    color: #fff;
+    /* 블록요소를 인라인요소로 변환 */
+    display: inline;
+}
+section.s6 .box .news .news_list div p {
+    font-size: 21px;
+    font-weight: bold;
+    margin: 22px 0 50px;
+}
+section.s6 .box .news .news_list div span {
+    color: #999;
+    font-size: 12px;
+}
+section.s6 .box .news .news_list b {
+    padding: 22px 30px;
+    display: block;
+    font-size: 14px;
+    font-style: normal;
+    color: #999;
+    background-color: #efefef;
+}
+/* news_list 영역에 마우스 오버했을때 b영역의 배경색, 글자색 변경 */
+section.s6 .box .news .news_list:hover b {
+    background-color: #cd4574;
+    color: #fff;
+}
+section.s7 {
+    background-image: url(../img/ft-gate-bg.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 130px 0;
+    /* height: 200px; */
+}
+section.s7 img {
+    width: initial;
+}
+section.s7 .ft {
+    width: 1050px;
+    margin-top: 20px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+section.s7 .ft a {
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 30px;
+    padding: 15px 38px;
+    font-weight: bold;
+    white-space: nowrap;
+    letter-spacing: -1px;
+}
+section.s7 .ft a:hover {
+    background-color: #cd4575;
+    border: 2px solid #cd4575
+}
+
+/* footer */
+footer {
+    background-color: #333;
+    color: #ccc;
+    padding: 90px 0;
+}
+footer img {
+    width: initial;
+}
+footer .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 51%;
+    white-space: nowrap;
+}
+footer .info .addr {
+    line-height: 30px;
+    font-size: 15px;
+}
+/* 위아래 한꺼번에 가로로 정렬 */
+footer .user div ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+footer .user .sns {
+    width: 170px;
+    margin: 0 auto;
+}
+footer .user .user_list {
+    width: 230px;
+    margin-top: 10px;
+}
+footer .user .user_list ul a {
+    font-size: 14px;
+    color: #bbb;
+    letter-spacing: -1px;
+    white-space: nowrap;
+}
+footer .user .user_list ul a:hover {
+    text-decoration: underline;
+}
